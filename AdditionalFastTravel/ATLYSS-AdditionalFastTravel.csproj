@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!-- Mod and assembly info. These also determine the metadata for Thunderstore and whatnot. -->
+    <PropertyGroup>
+        <AssemblyName>clearwater.atlyss.additionalfasttravel</AssemblyName>
+        <Product>AdditionalFastTravel</Product>
+        <Version>1.0.1</Version>
+    </PropertyGroup>
+
+    <!-- Generic assembly info. -->
+    <PropertyGroup>
+        <RootNamespace>ATLYSS_AdditionalFastTravel</RootNamespace>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyCSharpDir>D:\SteamLibrary\steamapps\common\ATLYSS\ATLYSS_Data\Managed\</AssemblyCSharpDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" PrivateAssets="all" Version="1.*" />
+        <PackageReference Include="BepInEx.Core" Version="5.4.*" />
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
+
+        <PackageReference Include="UnityEngine.Modules" Version="2022.3.62">
+            <IncludeAssets>all</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+
+        <Reference Include="$(AssemblyCSharpDir)/Assembly-CSharp.dll" Publicize="true" Private="False" />
+        <Reference Include="$(AssemblyCSharpDir)/UnityEngine.UI.dll" Private="False" />
+        <Reference Include="$(AssemblyCSharpDir)/Newtonsoft.Json.dll" Private="False" />
+        <Reference Include="$(AssemblyCSharpDir)/Mirror.dll" Private="False" />
+        <Reference Include="$(AssemblyCSharpDir)/com.rlabrecque.steamworks.net.dll" Private="False" />
+    </ItemGroup>
+
+    <!-- Thunderstore configuration -->
+    <PropertyGroup>
+        <CreateThunderstorePackage>true</CreateThunderstorePackage>
+
+        <ThunderstorePackageName>AdditionalFastTravel</ThunderstorePackageName>
+        <ThunderstoreTeamName>AtlyssModding</ThunderstoreTeamName>
+        <ThunderstorePackageDescription>Adds additional fast travel capabilities via chat commands.</ThunderstorePackageDescription>
+        <ThunderstoreWebsite>https://github.com/AtlyssModding/AdditionalFastTravel/</ThunderstoreWebsite>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ThunderstoreDependency Include="BepInEx-BepInExPack-5.4.2100" Visible="false" />
+
+        <ThunderstoreFile Visible="false" Include="../README.md" />
+        <ThunderstoreFile Visible="false" Include="../CHANGELOG.md" />
+        <ThunderstoreFile Visible="false" Include="../icon.png" />
+        <ThunderstoreFile Visible="false" Include="../LICENSE" />
+
+        <ThunderstoreFile Visible="false" Folder="plugins" FromBuild="true" Include="$(AssemblyName).dll" />
+    </ItemGroup>
+</Project>

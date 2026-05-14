@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATLYSS-AdditionalFastTravel", "ATLYSS-AdditionalFastTravel.csproj", "{A4FDB1E9-D3B5-4F4C-AC3F-532ED2D1FBC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATLYSS-AdditionalFastTravel", "AdditionalFastTravel\ATLYSS-AdditionalFastTravel.csproj", "{A4FDB1E9-D3B5-4F4C-AC3F-532ED2D1FBC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

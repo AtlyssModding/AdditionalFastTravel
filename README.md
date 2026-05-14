@@ -28,6 +28,7 @@ default spawn location of that area.
 <img src='./img/warp.png'>
 
 ### Using /goto
+
 Using the /goto command inside of a given area will list a selection of points
 of interest for the area is currently in (Examples for the Sanctum hub area includes
 the fishing lake, Sally's shop and the Outer Sanctum portal).
@@ -37,8 +38,8 @@ to the respective location in the current area.
 
 <img src='./img/goto1.png'>
 
-
 ## Limitations
+
 To prevent abnormal behavior, it is not possible to either directly warp to any
 dungeon instance in the game (Sanctum Catacombs, Crescent Grove), neither is it
 possible to use the /warp and/or /goto commands while inside a dungeon instance.
@@ -47,11 +48,13 @@ You may still /goto to each dungeon's entrance portal, and you may still Recall
 as normal out of a dungeon instance.
 
 # Credits
+
 Mod created by Clearwater
 
 ATLYSS created by Kiseff
 
 ## Donations
-If you enjoy my work, please consider donating! All received donations will go directly towards server hosting costs, which will allow me to keep the servers online for some of my other mods. Thank you!
+
+If you enjoyed this mod, please consider donating to Clearwater! All received donations will go directly towards server hosting costs, which will allow them to keep the servers online for some of their other mods. Thank you!
 <br><br>
-<a href='https://ko-fi.com/J3J7SN3N5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href='https://ko-fi.com/J3J7SN3N5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Clearwater a Coffee at ko-fi.com' /></a>
