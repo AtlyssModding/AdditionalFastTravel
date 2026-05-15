@@ -1,4 +1,4 @@
-﻿<img src='./logo.png'>
+﻿<img src='https://raw.githubusercontent.com/AtlyssModding/AdditionalFastTravel/refs/heads/master/icon.png'>
 
 # Additional Fast Travel
 
@@ -25,7 +25,7 @@ Using the /warp command will prompt the player to select an area name to warp to
 Using the warp command with a given area name will teleport the player to the
 default spawn location of that area.
 
-<img src='./img/warp.png'>
+<img src='https://raw.githubusercontent.com/AtlyssModding/AdditionalFastTravel/refs/heads/master/img/warp.png'>
 
 ### Using /goto
 
@@ -36,7 +36,7 @@ the fishing lake, Sally's shop and the Outer Sanctum portal).
 Using the /goto command with a given area of interest will move the player instantly
 to the respective location in the current area.
 
-<img src='./img/goto1.png'>
+<img src='https://raw.githubusercontent.com/AtlyssModding/AdditionalFastTravel/refs/heads/master/img/goto1.png'>
 
 ## Limitations
 
