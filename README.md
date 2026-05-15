@@ -1,4 +1,4 @@
-﻿<img src='https://raw.githubusercontent.com/AtlyssModding/AdditionalFastTravel/refs/heads/master/icon.png'>
+<img src='https://raw.githubusercontent.com/AtlyssModding/AdditionalFastTravel/refs/heads/master/icon.png'>
 
 # Additional Fast Travel
 
