@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace ATLYSS_AdditionalFastTravel;
 
@@ -111,7 +111,6 @@ public static class SceneData
             Path = "Assets/Scenes/00_zone_forest/_zone00_sanctum.unity",
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
             {
-                ["Spawn"] = new Vector3(8.4f, 7.3f, -16.1f),
                 ["Shop"] = new Vector3(200f, 11f, -110f),
                 ["Enchanting"] = new Vector3(310f, 11f, -281f),
                 ["Barracks"] = new Vector3(-160f, 29f, -600f),
@@ -135,9 +134,34 @@ public static class SceneData
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
             Spawnpoints = [
                 "spawnPoint",
-                "terraceSpawn",
                 "arcwoodSpawn",
-                "tuulValleyPoint"
+                "terraceSpawn",
+                "tuulValleySpawn"
+            ],
+        },
+        ["ArcwoodPass"] = new KnownSceneData()
+        {
+            Path = "Assets/Scenes/00_zone_forest/_zone00_arcwoodPass.unity",
+            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                ["Chapel"] = new Vector3(-54f, 1f, 1702f),
+                ["CatacombsEntrance"] = new Vector3(298f, 42f, 1819f),
+                ["BadgeMerchants"] = new Vector3(136f, 81f, 2585f),
+            },
+            Spawnpoints = [
+                "spawnPoint",
+                "Waypoint",
+                "DungeonPortal"
+                "endDungeonSpawn",
+                "crescentSpawn",
+            ]
+        },
+        ["CatacombsArena"] = new KnownSceneData()
+        {
+            Path = "Assets/Scenes/00_zone_forest/_zone00_catacombsArena.unity",
+            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
+            Spawnpoints = [
+                "spawnPoint"
             ],
         },
         ["EffoldTerrace"] = new KnownSceneData()
@@ -151,40 +175,14 @@ public static class SceneData
                 "startPoint"
             ]
         },
-        ["ArcwoodPass"] = new KnownSceneData()
-        {
-            Path = "Assets/Scenes/00_zone_forest/_zone00_arcwoodPass.unity",
-            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                ["CatacombsEntrance"] = new Vector3(298f, 42f, 1819f),
-                ["CatacombsMerchants"] = new Vector3(-54f, 1f, 1702f),
-                ["CatacombsBadgeMerchants"] = new Vector3(136f, 81f, 2585f),
-                ["FishingPond"] = new Vector3(453f, 48f, 1770f),
-            },
-            Spawnpoints = [
-                "spawnPoint",
-                "keepSpawn",
-                "catacombWaypoint",
-                "endDungeonSpawn",
-                "fortSpawn"
-            ]
-        },
-        ["CatacombsArena"] = new KnownSceneData()
-        {
-            Path = "Assets/Scenes/00_zone_forest/_zone00_catacombsArena.unity",
-            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
-            Spawnpoints = [
-                "spawnPoint"
-            ],
-        },
         ["CrescentRoad"] = new KnownSceneData()
         {
             Path = "Assets/Scenes/00_zone_forest/_zone00_crescentRoad.unity",
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
             Spawnpoints = [
                 "spawnPoint",
-                "keepSpawn",
-                "gardenPoint"
+                "crescentSpawn",
+                "gardenSpawn"
             ]
         },
         ["CrescentKeep"] = new KnownSceneData()
@@ -193,15 +191,13 @@ public static class SceneData
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
             {
                 ["KeepEntrance"] = new Vector3(-150f, 55f, 235f),
-                ["GroveDungeonLobby"] = new Vector3(-1265f, 225f, 575f),
-                ["GroveDungeonBadgeMerchants"] = new Vector3(-1265f, 225f, 655f),
+                ["GroveLobby"] = new Vector3(-1265f, 225f, 575f),
             },
             Spawnpoints = [
                 "startPoint",
-                "ckeepWaypoint1",
+                "Waypoint1",
+                "Waypoint2"
                 "moonGateSpawn",
-                "groveEntrance",
-                "ckeepWaypoint2"
             ]
         },
         ["LuvoraGarden"] = new KnownSceneData()
@@ -218,7 +214,7 @@ public static class SceneData
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
             Spawnpoints = [
                 "spawnPoint",
-                "enclavePoint"
+                "enclaveSpawn"
             ]
         },
         ["TuulEnclave"] = new KnownSceneData()
@@ -227,7 +223,7 @@ public static class SceneData
             Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase),
             Spawnpoints = [
                 "spawnPoint",
-                "enclavePoint"
+                "enclaveSpawn"
             ]
         },
         ["BularrFortress"] = new KnownSceneData()
@@ -242,6 +238,17 @@ public static class SceneData
                 "fortSpawn"
             ]
         },
+        ["GateOfTheMoon"] = new KnownSceneData()
+        {
+            Path = "Assets/Scenes/00_zone_forest/_zone00_gateOfTheMoon.unity",
+            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                ["RedwoudEntrance"] = new Vector3(805f, 5f, 820f),
+            },
+            Spawnpoints = [
+                "spawnPoint"
+            ]
+        },
         ["WallOfTheStars"] = new KnownSceneData()
         {
             Path = "Assets/Scenes/00_zone_forest/_zone00_wallOfTheStars.unity",
@@ -251,7 +258,7 @@ public static class SceneData
             },
             Spawnpoints = [
                 "spawnPoint",
-                "wallStarWaypoint",
+                "Waypoint",
                 "trialSpawn"
             ]
         },
@@ -265,17 +272,6 @@ public static class SceneData
                 ["Checkpoint2"] = new Vector3(-10f, 878f, 184f),
                 ["Checkpoint3"] = new Vector3(50f, 1130f, 181f),
                 ["Summit"] = new Vector3(-9f, 1507f, 289f),
-            },
-            Spawnpoints = [
-                "spawnPoint"
-            ]
-        },
-        ["GateOfTheMoon"] = new KnownSceneData()
-        {
-            Path = "Assets/Scenes/00_zone_forest/_zone00_gateOfTheMoon.unity",
-            Gotos = new Dictionary<string, Vector3>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                ["RedwoudEntrance"] = new Vector3(805f, 5f, 820f),
             },
             Spawnpoints = [
                 "spawnPoint"
