@@ -49,19 +49,86 @@ namespace ATLYSS_AdditionalFastTravel.HarmonyPatches;
 //     }
 // }
 
+[HarmonyPatch(typeof(NetworkManager), nameof(NetworkManager.ClientChangeScene))]
+static class ListenForSceneChanges
+{
+    private static void Prefix(string newSceneName, SceneOperation sceneOperation)
+    {
+        if (sceneOperation == SceneOperation.LoadAdditive)
+        {
+            SceneData.LastNetworkSceneLoaded = newSceneName;
+        }
+    }
+}
+
 [HarmonyPatch(typeof(ChatBehaviour), nameof(ChatBehaviour.Cmd_SendChatMessage))]
 static class ListenForWarpCommandPatch
 {
+    private static void Usage(string msg) => Utils.ChatMsg($"<color=orange>Usage:</color> {msg}");
+    
     private static bool Prefix(string _message)
     {
-        if (_message.Contains("/warp"))
+        var splitCmds = _message.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (splitCmds.Length == 0)
+            return true;
+
+        if (splitCmds[0] == "/warp")
         {
-            WarpCommand.ProcessCommand(_message);
+            if (splitCmds.Length == 1)
+            {
+                FastTravelActions.ListWarps();
+            }
+
+            if (splitCmds.Length == 2)
+            {
+                FastTravelActions.WarpToScene(splitCmds[1], "");
+            }
+            else if (splitCmds.Length == 3)
+            {
+                FastTravelActions.WarpAndGoto(splitCmds[1], splitCmds[2]);
+            }
+            else
+            {
+                Usage("\n  <color=orange>/warp [area]</color> - warp to map\n  <color=orange>/warp [area] [goto]</color> - warp and goto at the same time");
+            }
+            
             return false;
         }
-        else if (_message.Contains("/goto"))
+        else if (splitCmds[0] == "/dungeon")
         {
-            GotoCommand.ProcessCommand(_message);
+            if (splitCmds.Length == 1)
+            {
+                FastTravelActions.ListWarps();
+            }
+            
+            if (splitCmds.Length == 3)
+            {
+                FastTravelActions.WarpToScene(splitCmds[1], splitCmds[2]);
+            }
+            else
+            {
+                Usage("\n  <color=orange>/dungeon [area] [difficulty]</color> - warp to map with EASY / NORMAL / HARD difficulty");
+            }
+            
+            return false;
+        }
+        else if (splitCmds[0] == "/goto")
+        {
+            if (splitCmds.Length == 1)
+            {
+                FastTravelActions.ListGotos();
+            }
+            
+            if (splitCmds.Length == 2)
+            {
+                FastTravelActions.GoToLocation(splitCmds[1]);
+            }
+            else
+            {
+                Usage("\n  <color=orange>/goto [location]</color> - go to location in current map");
+            }
+            
             return false;
         }
             

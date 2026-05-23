@@ -10,14 +10,21 @@ public class Main : BaseUnityPlugin
     //This method is called when your mod is first loaded. Use this to handle any startup & initialisation logic.
     private void Awake()
     {
-        Logging.Warn("-- LOADING " + ModInfo.NAME + "--");
+        Logging.Info("-- LOADING " + ModInfo.NAME + "--");
             
         Harmony harmony = new Harmony(ModInfo.GUID);
         harmony.PatchAll();
     }
-        
-    public void onSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
 
+    private void LateUpdate()
+    {
+        if (!string.IsNullOrWhiteSpace(StoredGoto) && Player._mainPlayer && !Player._mainPlayer._bufferingStatus && DateTime.Now >= StoredGotoNotBefore)
+        {
+            FastTravelActions.GoToLocation(StoredGoto);
+            StoredGoto = "";
+        }
     }
+
+    public static DateTime StoredGotoNotBefore { get; internal set; } = DateTime.Now;
+    public static string StoredGoto { get; internal set; } = "";
 }

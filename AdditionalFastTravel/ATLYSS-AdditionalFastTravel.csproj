@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>clearwater.atlyss.additionalfasttravel</AssemblyName>
         <Product>AdditionalFastTravel</Product>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <!-- Generic assembly info. -->
@@ -37,7 +37,7 @@
         <Reference Include="$(AssemblyCSharpDir)/Assembly-CSharp.dll" Publicize="true" Private="False" />
         <Reference Include="$(AssemblyCSharpDir)/UnityEngine.UI.dll" Private="False" />
         <Reference Include="$(AssemblyCSharpDir)/Newtonsoft.Json.dll" Private="False" />
-        <Reference Include="$(AssemblyCSharpDir)/Mirror.dll" Private="False" />
+        <Reference Include="$(AssemblyCSharpDir)/Mirror.dll" Publicize="true" Private="False" />
         <Reference Include="$(AssemblyCSharpDir)/com.rlabrecque.steamworks.net.dll" Private="False" />
     </ItemGroup>
 
