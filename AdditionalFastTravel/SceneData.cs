@@ -11,6 +11,13 @@ public static class SceneData
         {
             Name = "";
         }
+        
+        public static Goto FromSpawnPointDisable(string spawnPoint) => new()
+        {
+            Name = "",
+            SpawnPoint = spawnPoint,
+            Disabled = true,
+        };
 
         public static Goto FromSpawnPoint(string name, string spawnPoint) => new()
         {
@@ -27,6 +34,7 @@ public static class SceneData
         public string Name;
         public string? SpawnPoint;
         public Vector3? Position;
+        public bool Disabled;
     }
     
     public struct KnownSceneData
@@ -98,7 +106,7 @@ public static class SceneData
         return SceneData.UpdateFromMapSpawnPoints(currentScene.Gotos ?? []);
     }
 
-    public static List<Goto> UpdateFromMapSpawnPoints(List<Goto> gotos)
+    private static List<Goto> UpdateFromMapSpawnPoints(List<Goto> gotos)
     {
         var spawnPoints = UnityEngine.Object.FindObjectsByType<SpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         var updatedGotos = new List<Goto>(gotos);
@@ -119,7 +127,7 @@ public static class SceneData
             {
                 updatedGotos[existingGotoIndex] = updatedGotos[existingGotoIndex] with
                 {
-                    Position = spawnPoint.transform.position
+                    Position = spawnPoint.transform.position,
                 };
             }
             else
@@ -129,7 +137,7 @@ public static class SceneData
             }
         }
 
-        return updatedGotos;
+        return updatedGotos.Where(x => !x.Disabled).ToList();
     }
 
     // Spawn points can be retrieved by searching for SpawnPoint MonoBehaviours in a scene
@@ -159,6 +167,9 @@ public static class SceneData
             Gotos =
             [
                 Goto.FromSpawnPoint("Spawn", "startPoint"),
+                Goto.FromSpawnPoint("WorldPortal", "worldPortalPoint"),
+                Goto.FromSpawnPoint("OuterSanctum", "gatePoint"),
+                Goto.FromSpawnPoint("Respawn", "respawnPoint"),
                 Goto.FromPosition("Shop", new Vector3(200f, 11f, -110f)),
                 Goto.FromPosition("Enchanting", new Vector3(310f, 11f, -281f)),
                 Goto.FromPosition("Barracks", new Vector3(-160f, 29f, -600f)),
@@ -237,7 +248,7 @@ public static class SceneData
             [
                 Goto.FromPosition("KeepEntrance", new Vector3(-150f, 55f, 235f)),
                 Goto.FromPosition("GroveLobby", new Vector3(-1265f, 225f, 575f)),
-                Goto.FromSpawnPoint("Spawn", "startPoint"),
+                Goto.FromSpawnPoint("CrescentRoad", "startPoint"),
                 Goto.FromSpawnPoint("Waypoint1", "ckeepWaypoint1"),
                 Goto.FromSpawnPoint("Waypoint2", "ckeepWaypoint2"),
                 Goto.FromSpawnPoint("GateOfTheMoon", "moonGateSpawn"),
@@ -257,7 +268,7 @@ public static class SceneData
             Name = "TuulValley",
             Path = "Assets/Scenes/00_zone_forest/_zone00_tuulValley.unity",
             Gotos = [
-                Goto.FromSpawnPoint("Spawn", "spawnPoint"),
+                Goto.FromSpawnPoint("OuterSanctum", "spawnPoint"),
                 Goto.FromSpawnPoint("TuulEnclave", "enclavePoint")
             ],
         },
@@ -267,8 +278,8 @@ public static class SceneData
             Path = "Assets/Scenes/00_zone_forest/_zone00_tuulEnclave.unity",
             Gotos =
             [
-                Goto.FromSpawnPoint("Spawn", "spawnPoint"),
-                Goto.FromSpawnPoint("TuulEnclave", "enclavePoint")
+                Goto.FromSpawnPoint("TuulValley", "spawnPoint"),
+                Goto.FromSpawnPoint("BularrFortress", "fortSpawn")
             ]
         },
         new KnownSceneData()
@@ -278,8 +289,8 @@ public static class SceneData
             Gotos =
             [
                 Goto.FromPosition("AmmagonHut", new Vector3(-92f, 14f, -580f)),
-                Goto.FromSpawnPoint("Spawn", "startPoint"),
-                Goto.FromSpawnPoint("Fort", "fortSpawn")
+                Goto.FromSpawnPoint("TuulEnclave", "startPoint"),
+                Goto.FromSpawnPoint("Waypoint", "tuulValleyWaypoint")
             ],
         },
         new KnownSceneData()
@@ -289,7 +300,10 @@ public static class SceneData
             Gotos =
             [
                 Goto.FromPosition("RedwoudEntrance", new Vector3(805f, 5f, 820f)),
-                Goto.FromSpawnPoint("Spawn", "spawnPoint")
+                Goto.FromSpawnPoint("CrescentKeep", "spawnPoint"),
+                Goto.FromSpawnPointDisable("treePoint"), // Teleports nowhere
+                Goto.FromSpawnPointDisable("autumnPoint"), // Weird teleport
+                Goto.FromSpawnPoint("WallOfTheStars", "starWallSpawn"),
             ]
         },
         new KnownSceneData()
@@ -299,7 +313,7 @@ public static class SceneData
             Gotos =
             [
                 Goto.FromPosition("Merchant", new Vector3(-100f, 12f, -345f)),
-                Goto.FromSpawnPoint("Spawn", "spawnPoint"),
+                Goto.FromSpawnPoint("GateOfTheMoon", "spawnPoint"),
                 Goto.FromSpawnPoint("Waypoint", "wallStarWaypoint"),
                 Goto.FromSpawnPoint("TrialOfTheStars", "trialSpawn")
             ]
@@ -314,8 +328,8 @@ public static class SceneData
                 Goto.FromPosition("Checkpoint1", new Vector3(60f, 448f, 185f)),
                 Goto.FromPosition("Checkpoint2", new Vector3(-10f, 878f, 184f)),
                 Goto.FromPosition("Checkpoint3", new Vector3(50f, 1130f, 181f)),
-                Goto.FromPosition("Summit", new Vector3(-9f, 1507f, 289f)),
-                Goto.FromSpawnPoint("Spawn", "spawnPoint")
+                Goto.FromPosition("Summit", new Vector3(-9f, 1511f, 289f)),
+                Goto.FromSpawnPoint("WallOfTheStars", "spawnPoint")
             ],
         },
         // TODO: Make accessible when area is updated

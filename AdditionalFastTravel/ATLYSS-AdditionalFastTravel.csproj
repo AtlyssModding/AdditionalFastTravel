@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>clearwater.atlyss.additionalfasttravel</AssemblyName>
         <Product>AdditionalFastTravel</Product>
-        <Version>1.1.0</Version>
+        <Version>1.1.1</Version>
     </PropertyGroup>
 
     <!-- Generic assembly info. -->
